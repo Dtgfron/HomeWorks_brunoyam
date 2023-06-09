@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+</head>
+<body>
+<form>
+    <div class="point"> 
+
+        <div class="text">
+            <p><strong></strong>Рассчитайте примерный платёж</p>
+        </div>
+
+        <div class="row"> 
+            <input type="number" class="sumPrice" placeholder="Цена недвижимости"> 
+            <input type="number" class="downPayment1" placeholder="Первоначальный взнос"> 
+        </div> 
+
+        <div class="row"> 
+            <input type="number" class="period1" placeholder="Срок кредита"> 
+        </div>
+
+        <div class="row">
+            <button type="button" class="calc-btn">Рассчитать</button> 
+        </div>
+
+        <div class="row">
+            <div class="text">Ежемесячный платеж:</div>
+            <div class="result"></div>
+        </div>
+        <div class="row"> 
+        <div class="text">Сумма кредита:</div>
+        <div class="sumPriceForUser"></div>
+        </div>
+    </div>
+    
+</form>
+</body>
+<script src="mortgage.js"></script> 
+
+     
+<style> 
+
+    .text {
+    text-align:  center;
+   }
+    .point { 
+        width: 350px; 
+    } 
+    .row { 
+            display: flex; 
+            justify-content: space-between; 
+    }
+
+    .calc-btn { 
+        width: 100%; 
+    } 
+
+    .result--black { 
+            color: black; 
+        } 
+     
+    .result--red { 
+            color:red; 
+        } 
+     
+ 
+</style>
+</html>
