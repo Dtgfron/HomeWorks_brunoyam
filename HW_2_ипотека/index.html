@@ -2,7 +2,7 @@
 <html>
 </head>
 <body>
-<form>
+<form onsubmit="">
     <div class="point"> 
 
         <div class="text">
@@ -15,11 +15,14 @@
         </div> 
 
         <div class="row"> 
-            <input type="number" class="period1" placeholder="Срок кредита"> 
+            <input type="number" class="period1" placeholder="Срок кредита">
         </div>
 
+
         <div class="row">
-            <button type="button" class="calc-btn">Рассчитать</button> 
+
+            <input type="submit" value="Рассчитать" onclick="getPayment()"</inbut>
+           
         </div>
 
         <div class="row">
@@ -50,7 +53,7 @@
             justify-content: space-between; 
     }
 
-    .calc-btn { 
+    .btn { 
         width: 100%; 
     } 
 
