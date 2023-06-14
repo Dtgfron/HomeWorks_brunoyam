@@ -1,6 +1,6 @@
-
-function getPayment() {
+function getPayment(event) {
     debugger
+    
     const resultElement = document.querySelector('.result');
     const resultElement2 = document.querySelector('.sumPriceForUser');
     const sum = Number(document.querySelector('.sumPrice').value);
@@ -13,8 +13,10 @@ function getPayment() {
     const result = sumCredit * coefficient;
     const finalResult = result.toFixed(0);
 
+  
     resultElement.classList.remove('result--black');
     resultElement.classList.remove('result--red');
+
     if (finalResult >= 50000) {
     resultElement.innerHTML = String(finalResult);
     resultElement.classList.add('result--red');
@@ -23,16 +25,12 @@ function getPayment() {
     resultElement.innerHTML = String(finalResult);
     resultElement.classList.add('result--black');
     resultElement2.innerHTML = String(sumCredit);  
-    }
-
+    } 
     
-}
-
-
-document.querySelector('.calc-btn').addEventListener('click',getPayment);
-
-
-
-
+    event.preventDefault();
+   
+    }
+   
+document.querySelector('form').addEventListener('submit', getPayment);
 
 
