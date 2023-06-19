@@ -1,7 +1,5 @@
 tikToeField = [new Array(3), new Array(3), new Array(3)];
 
-debugger
-
 htmlFieldString = '';
 
 for (let i = 0; i < tikToeField.length; i++) {
