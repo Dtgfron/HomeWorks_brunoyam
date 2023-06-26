@@ -3,13 +3,14 @@ function main() {
   createField(tikTacToeField);
 
   document.querySelector('.field').innerHTML = htmlFieldString;
-  document.querySelector('.field').addEventListener('click', function(event) {
+  
+  document.querySelector('.field').addEventListener('click', 
+  function(event) {
     onFieldClick(event, tikTacToeField),
-      isVerticalWinner(tikTacToeField),
-      isHorizontalWinner(tikTacToeField)
+    isWinner(tikTacToeField)
   });
 }
-
+                                                  
 function createField(field) {
   htmlFieldString = '';
   field.forEach((elem, i) => {
@@ -47,7 +48,7 @@ function onFieldClick(event, field) {
   document.querySelector(`.cell-${i}-${j}`).innerHTML = field[i][j];
 }
 
-function isHorizontalWinner(field) {
+function isWinner(field) {
   field.forEach((elem, i) => {
     let counter = 0;
     let firstElementHorizontal = field[i][0];
@@ -66,9 +67,7 @@ function isHorizontalWinner(field) {
       }
     }
   });
-}
-
-function isVerticalWinner(field) {
+  
   field.forEach((elem, j) => {
     let counter = 0;
     let firstElementVertical = field[0][j];
@@ -88,3 +87,4 @@ function isVerticalWinner(field) {
 }
 
 main();
+
