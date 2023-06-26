@@ -1,5 +1,17 @@
 function main() {
   const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
+
+  function createField(field) {
+    htmlFieldString = '';
+    field.forEach((elem, i) => {
+      htmlFieldString += '<div class="row">';
+      field.forEach((elem, j) => {
+        htmlFieldString += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
+      })
+      htmlFieldString += '</div>';
+    });
+  }
+
   createField(tikTacToeField);
 
   document.querySelector('.field').innerHTML = htmlFieldString;
@@ -11,17 +23,6 @@ function main() {
   });
 }
                                                   
-function createField(field) {
-  htmlFieldString = '';
-  field.forEach((elem, i) => {
-    htmlFieldString += '<div class="row">';
-    field.forEach((elem, j) => {
-      htmlFieldString += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
-    })
-    htmlFieldString += '</div>';
-  });
-}
-
 function getCurrentPlayerSymbol(field) {
   let stepsCount = 0;
 
