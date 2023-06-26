@@ -1,20 +1,32 @@
-function createField() {
-  htmlFieldString = '';
-  tikTacToeField.forEach((elem, i) => {
-    htmlFieldString += '<div class="row">';
-    tikTacToeField.forEach((elem, j) => {
-    htmlFieldString += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
-  })
-  htmlFieldString += '</div>';
+function main() {
+  const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
+  createField(tikTacToeField);
+
+  document.querySelector('.field').innerHTML = htmlFieldString;
+  document.querySelector('.field').addEventListener('click', function(event) {
+    onFieldClick(event, tikTacToeField),
+      isVerticalWinner(tikTacToeField),
+      isHorizontalWinner(tikTacToeField)
   });
 }
 
-function getCurrentPlayerSymbol() {
+function createField(field) {
+  htmlFieldString = '';
+  field.forEach((elem, i) => {
+    htmlFieldString += '<div class="row">';
+    field.forEach((elem, j) => {
+      htmlFieldString += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
+    })
+    htmlFieldString += '</div>';
+  });
+}
+
+function getCurrentPlayerSymbol(field) {
   let stepsCount = 0;
 
-  tikTacToeField.forEach((elem, i) => {
-    tikTacToeField.forEach((elem, j) => {
-      if (tikTacToeField[i][j] !== undefined) {
+  field.forEach((elem, i) => {
+    field.forEach((elem, j) => {
+      if (field[i][j] !== undefined) {
         stepsCount++;
       }
     });
@@ -22,68 +34,57 @@ function getCurrentPlayerSymbol() {
   return stepsCount % 2 === 0;
 }
 
-function onFieldClick(event) {
+function onFieldClick(event, field) {
   const targetElement = event.target;
   const i = targetElement.dataset.i;
   const j = targetElement.dataset.j;
-  
-  if (tikTacToeField[i][j] !== undefined) {
+
+  if (field[i][j] !== undefined) {
     return;
   }
 
-  tikTacToeField[i][j] = getCurrentPlayerSymbol() ? 'X' : '0';
-  document.querySelector(`.cell-${i}-${j}`).innerHTML = tikTacToeField[i][j];
+  field[i][j] = getCurrentPlayerSymbol(field) ? 'X' : '0';
+  document.querySelector(`.cell-${i}-${j}`).innerHTML = field[i][j];
 }
 
-function isHorizontalWinner() {
-  tikTacToeField.forEach((elem, i) => {
+function isHorizontalWinner(field) {
+  field.forEach((elem, i) => {
     let counter = 0;
-    let firstElementHorizontal = tikTacToeField[i][0];
+    let firstElementHorizontal = field[i][0];
 
     if (firstElementHorizontal !== undefined) {
-      tikTacToeField.forEach((elem, j) =>  {
-        if (firstElementHorizontal === tikTacToeField[i][j]) {
+      field.forEach((elem, j) => {
+        if (firstElementHorizontal === field[i][j]) {
           counter++;
         }
       });
 
-      if (counter === tikTacToeField.length) {{
-        alert('Победил игрок: ' + firstElementHorizontal);
-      }
+      if (counter === field.length) {
+        {
+          alert('Победил игрок: ' + firstElementHorizontal);
+        }
       }
     }
   });
 }
 
-function isVerticalWinner() {
-  tikTacToeField.forEach ((elem, j) => {
+function isVerticalWinner(field) {
+  field.forEach((elem, j) => {
     let counter = 0;
-    let firstElementVertical = tikTacToeField[0][j];
+    let firstElementVertical = field[0][j];
 
     if (firstElementVertical !== undefined) {
-      tikTacToeField.forEach ((elem, i) => {
-        if (firstElementVertical === tikTacToeField[i][j]) {
+      field.forEach((elem, i) => {
+        if (firstElementVertical === field[i][j]) {
           counter++;
         }
       });
 
-      if (counter === tikTacToeField.length) {
+      if (counter === field.length) {
         alert('Победил игрок: ' + firstElementVertical);
       }
     }
   });
 }
 
-function main () {
-  const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
-  createField(tikTacToeField);
-  document.querySelector('.field').innerHTML = htmlFieldString;
-  
-  document.querySelector('.field').addEventListener('click', function (event) {
-  onFieldClick(event),
-  isVerticalWinner(),
-  isHorizontalWinner()
-});
-}
-
-main ();
+main();
