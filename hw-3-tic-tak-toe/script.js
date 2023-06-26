@@ -19,7 +19,7 @@ function main() {
   document.querySelector('.field').addEventListener('click', 
   function(event) {
     onFieldClick(event, tikTacToeField),
-    isWinner(tikTacToeField)
+    showWinner(tikTacToeField)
   });
 }
                                                   
@@ -49,7 +49,7 @@ function onFieldClick(event, field) {
   document.querySelector(`.cell-${i}-${j}`).innerHTML = field[i][j];
 }
 
-function isWinner(field) {
+function showWinner(field) {
   field.forEach((elem, i) => {
     let counter = 0;
     let firstElementHorizontal = field[i][0];
