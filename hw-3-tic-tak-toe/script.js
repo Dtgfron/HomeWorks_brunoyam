@@ -1,18 +1,18 @@
 function main() {
   const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
+  let htmlFieldString = '';
 
-  function createField(field) {
-    htmlFieldString = '';
+  function createField(field, string) {
     field.forEach((elem, i) => {
-      htmlFieldString += '<div class="row">';
+      string += '<div class="row">';
       field.forEach((elem, j) => {
-        htmlFieldString += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
+        string += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
       })
-      htmlFieldString += '</div>';
+      string += '</div>';
     });
   }
 
-  createField(tikTacToeField);
+  createField(tikTacToeField, htmlFieldString);
 
   document.querySelector('.field').innerHTML = htmlFieldString;
   
