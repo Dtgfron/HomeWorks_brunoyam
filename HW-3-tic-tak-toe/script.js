@@ -1,5 +1,3 @@
-const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
-
 function createField() {
   htmlFieldString = '';
   tikTacToeField.forEach((elem, i) => {
@@ -8,14 +6,10 @@ function createField() {
     htmlFieldString += `<div class="cell cell-${i}-${j}" data-i="${i}" data-j="${j}"></div>`;
   })
   htmlFieldString += '</div>';
-  })
+  });
 }
 
-createField(tikTacToeField);
-
-document.querySelector('.field').innerHTML = htmlFieldString;
-
-function step() {
+function getCurrentPlayerSymbol() {
   let stepsCount = 0;
 
   tikTacToeField.forEach((elem, i) => {
@@ -23,13 +17,10 @@ function step() {
       if (tikTacToeField[i][j] !== undefined) {
         stepsCount++;
       }
-    })
-  })
-
+    });
+  });
   return stepsCount % 2 === 0;
 }
-
-step(tikTacToeField);
 
 function onFieldClick(event) {
   const targetElement = event.target;
@@ -40,11 +31,11 @@ function onFieldClick(event) {
     return;
   }
 
-  tikTacToeField[i][j] = step() ? 'X' : '0';
+  tikTacToeField[i][j] = getCurrentPlayerSymbol() ? 'X' : '0';
   document.querySelector(`.cell-${i}-${j}`).innerHTML = tikTacToeField[i][j];
 }
 
-function winUserHorizontal() {
+function isHorizontalWinner() {
   tikTacToeField.forEach((elem, i) => {
     let counter = 0;
     let firstElementHorizontal = tikTacToeField[i][0];
@@ -54,17 +45,17 @@ function winUserHorizontal() {
         if (firstElementHorizontal === tikTacToeField[i][j]) {
           counter++;
         }
-      })
+      });
 
       if (counter === tikTacToeField.length) {{
         alert('Победил игрок: ' + firstElementHorizontal);
       }
       }
     }
-  })
+  });
 }
 
-function winUserVertical() {
+function isVerticalWinner() {
   tikTacToeField.forEach ((elem, j) => {
     let counter = 0;
     let firstElementVertical = tikTacToeField[0][j];
@@ -74,16 +65,25 @@ function winUserVertical() {
         if (firstElementVertical === tikTacToeField[i][j]) {
           counter++;
         }
-      })
+      });
 
       if (counter === tikTacToeField.length) {
         alert('Победил игрок: ' + firstElementVertical);
       }
     }
-  })
+  });
 }
 
-document.querySelector('.field').addEventListener('click', function (event) {
-  onFieldClick(event), winUserVertical(), winUserHorizontal()
+function main () {
+  const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
+  createField(tikTacToeField);
+  document.querySelector('.field').innerHTML = htmlFieldString;
+  
+  document.querySelector('.field').addEventListener('click', function (event) {
+  onFieldClick(event),
+  isVerticalWinner(),
+  isHorizontalWinner()
 });
+}
 
+main ();
