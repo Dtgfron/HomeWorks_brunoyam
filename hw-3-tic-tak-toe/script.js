@@ -1,4 +1,5 @@
-(function () {function main() {
+(function () {
+  function main() {
   const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
   let htmlFieldString = '';
 
