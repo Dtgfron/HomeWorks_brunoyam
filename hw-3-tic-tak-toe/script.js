@@ -1,4 +1,4 @@
-function main() {
+(function () {function main() {
   const tikTacToeField = [new Array(3), new Array(3), new Array(3)];
   let htmlFieldString = '';
 
@@ -88,4 +88,4 @@ function showWinner(field) {
 }
 
 main();
-
+})();
